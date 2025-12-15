@@ -3,24 +3,186 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --card: #f5f5f5;
+  --card-foreground: #171717;
+  --primary: #10b981;
+  --primary-foreground: #ffffff;
+  --secondary: #3b82f6;
+  --secondary-foreground: #ffffff;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --border: #e2e8f0;
+}
+
+[data-theme="dark"] {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --card: #171717;
+  --card-foreground: #ededed;
+  --primary: #10b981;
+  --primary-foreground: #ffffff;
+  --secondary: #3b82f6;
+  --secondary-foreground: #ffffff;
+  --muted: #262626;
+  --muted-foreground: #a1a1aa;
+  --border: #262626;
+}
+
+[data-theme="catppuccin"] {
+  --background: #1e1e2e;
+  --foreground: #cdd6f4;
+  --card: #181825;
+  --card-foreground: #cdd6f4;
+  --primary: #a6e3a1; /* Green */
+  --primary-foreground: #1e1e2e;
+  --secondary: #89b4fa; /* Blue */
+  --secondary-foreground: #1e1e2e;
+  --muted: #313244;
+  --muted-foreground: #a6adc8;
+  --border: #45475a;
+}
+
+[data-theme="everblush"] {
+  --background: #141b1e;
+  --foreground: #dadada;
+  --card: #182024;
+  --card-foreground: #dadada;
+  --primary: #8ccf7e;
+  --primary-foreground: #141b1e;
+  --secondary: #67b0e8;
+  --secondary-foreground: #141b1e;
+  --muted: #232a2d;
+  --muted-foreground: #b3b9b8;
+  --border: #232a2d;
+}
+
+[data-theme="everforest"] {
+  --background: #2b3339;
+  --foreground: #d3c6aa;
+  --card: #323c41;
+  --card-foreground: #d3c6aa;
+  --primary: #a7c080;
+  --primary-foreground: #2b3339;
+  --secondary: #7fbbb3;
+  --secondary-foreground: #2b3339;
+  --muted: #3a454a;
+  --muted-foreground: #9da9a0;
+  --border: #4b565c;
+}
+
+[data-theme="monokai"] {
+  --background: #272822; /* Classic Monokai uses slightly distinct dark */
+  --foreground: #f8f8f2;
+  --card: #1e1f1c;
+  --card-foreground: #f8f8f2;
+  --primary: #a6e22e;
+  --primary-foreground: #272822;
+  --secondary: #66d9ef;
+  --secondary-foreground: #272822;
+  --muted: #3e3d32;
+  --muted-foreground: #75715e;
+  --border: #49483e;
+}
+
+[data-theme="tokyo-night"] {
+  --background: #1a1b26;
+  --foreground: #c0caf5;
+  --card: #16161e;
+  --card-foreground: #c0caf5;
+  --primary: #9ece6a;
+  --primary-foreground: #1a1b26;
+  --secondary: #7aa2f7;
+  --secondary-foreground: #1a1b26;
+  --muted: #292e42;
+  --muted-foreground: #565f89;
+  --border: #292e42;
+}
+
+[data-theme="cyberpunk"] {
+  --background: #000b1e; /* Deep blue/black */
+  --foreground: #00f0ff; /* Cyan */
+  --card: #051429;
+  --card-foreground: #00f0ff;
+  --primary: #fcee0a; /* Neon Yellow */
+  --primary-foreground: #000000;
+  --secondary: #ff003c; /* Neon Red */
+  --secondary-foreground: #ffffff;
+  --muted: #0a1f3d;
+  --muted-foreground: #0099ad;
+  --border: #00f0ff;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: var(--muted);
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--muted-foreground);
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--foreground);
+}
+
+/* 3D Perspective */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.animate-spin-slow {
+  animation: spin 8s linear infinite;
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse-subtle {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(0.98);
+  }
 }

@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FP Tegraf Project
 
-## Getting Started
+This project implements the solutions for the Graph Theory & Automata (Tegraf) practicum assignments (The Knight's Tour & LMIS).
 
-First, run the development server:
+## Features
+1.  **The Knight's Tour (Warnsdorff's Algorithm)**:
+    *   Simulates a knight visiting every square on an 8x8 chessboard exactly once.
+    *   Supports Open Tour (end anywhere) and Closed Tour (end at a square attacking the start).
+    *   Visualizes the path with step-by-step animation and connecting lines.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+2.  **Largest Monotonically Increasing Subsequence (LMIS)**:
+    *   Visualizes the recursive search tree for the Longest Increasing Subsequence problem.
+    *   Highlights the resulting longest path in the tree.
+    *   Allows custom integer sequence input.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack
+*   **Framework**: Next.js 15 (React 19)
+*   **Language**: TypeScript
+*   **Styling**: TailwindCSS v4 + Vanilla CSS
+*   **Animation**: Framer Motion
+*   **Icons**: Lucide React
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## How to Run
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1.  **Install Dependencies**:
+    ```bash
+    npm install
+    # or
+    bun install
+    ```
 
-## Learn More
+2.  **Run Development Server**:
+    ```bash
+    npm run dev
+    # or
+    bun dev
+    ```
 
-To learn more about Next.js, take a look at the following resources:
+3.  **Open in Browser**:
+    Navigate to [http://localhost:3000](http://localhost:3000).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Usage Guide
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Knight's Tour Page
+1.  Click on any square on the 8x8 grid to set the **Starting Position**.
+2.  Toggle **"Closed Tour"** if you want the knight to attempt finding a path that loops back to the start.
+3.  Click **"Start Tour"** to begin the simulation.
+4.  Watch the animation as the knight moves. The path is drawn with lines, and squares are numbered 1-64.
 
-## Deploy on Vercel
+### LMIS Page
+1.  Enter a sequence of numbers separated by commas in the input field (e.g., `4, 1, 13, 7, 0, 2, 8, 11, 3`).
+2.  Click **"Build Tree"** to generate the recursion tree structure.
+3.  Click **"Find Longest Path"** to highlight the nodes that form the Maximum Monotonically Increasing Subsequence.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Architecture
+The project follows a Clean Architecture approach:
+*   `core/`: Contains pure algorithms (`knightsTour.ts`, `lmis.ts`).
+*   `components/`: Contains UI components (`Chessboard`, `TreeVisualizer`).
+*   `app/`: Contains page logic and routing.

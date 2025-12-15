@@ -1,65 +1,61 @@
-import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight, Box, Trees } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="min-h-screen bg-background text-foreground font-sans flex flex-col items-center justify-center p-8 relative overflow-hidden transition-colors duration-300">
+      
+      {/* Background Elements - Subtle Glows */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
+          <div className="absolute top-[-10%] left-[-10%] w-[30%] h-[30%] rounded-full bg-primary/10 blur-[100px]" />
+          <div className="absolute bottom-[-10%] right-[-10%] w-[30%] h-[30%] rounded-full bg-secondary/10 blur-[100px]" />
+      </div>
+
+      <div className="z-10 text-center max-w-3xl">
+        <h1 className="text-6xl md:text-7xl font-bold mb-6 tracking-tight text-foreground">
+          Graph & Tree <br/> Algorithms
+        </h1>
+        <p className="text-xl text-muted-foreground mb-12 leading-relaxed">
+          Interactive visualizations for complex computational problems.
+          Explore the Knight's Tour and Largest Monotonically Increasing Subsequence.
+        </p>
+
+        <div className="grid md:grid-cols-2 gap-6 w-full">
+          <Link href="/knights-tour" className="group">
+            <div className="h-full bg-card border border-border p-8 rounded-xl hover:border-primary hover:bg-muted/50 transition-all duration-300 flex flex-col items-start gap-4 shadow-xl">
+              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                <Box size={24} />
+              </div>
+              <div className="text-left">
+                <h2 className="text-2xl font-bold mb-2 text-foreground group-hover:text-primary transition-colors">Knight's Tour</h2>
+                <p className="text-muted-foreground text-sm">Visualize Warnsdorff's algorithm solving the classic chess problem on an 8x8 board.</p>
+              </div>
+              <div className="mt-auto pt-4 flex items-center gap-2 text-primary text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity transform translate-x-[-10px] group-hover:translate-x-0">
+                Launch <ArrowRight size={16} />
+              </div>
+            </div>
+          </Link>
+
+          <Link href="/lmis" className="group">
+            <div className="h-full bg-card border border-border p-8 rounded-xl hover:border-secondary hover:bg-muted/50 transition-all duration-300 flex flex-col items-start gap-4 shadow-xl">
+              <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-secondary-foreground transition-colors">
+                <Trees size={24} />
+              </div>
+              <div className="text-left">
+                <h2 className="text-2xl font-bold mb-2 text-foreground group-hover:text-secondary transition-colors">LMIS Tree</h2>
+                <p className="text-muted-foreground text-sm">Construct and explore the recursion tree to find the Largest Monotonically Increasing Subsequence.</p>
+              </div>
+              <div className="mt-auto pt-4 flex items-center gap-2 text-secondary text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity transform translate-x-[-10px] group-hover:translate-x-0">
+                Launch <ArrowRight size={16} />
+              </div>
+            </div>
+          </Link>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+      </div>
+      
+      <footer className="absolute bottom-8 text-slate-600 text-sm">
+        FP Tegraf &copy; {new Date().getFullYear()}
+      </footer>
     </div>
   );
 }
